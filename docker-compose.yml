@@ -1,0 +1,24 @@
+version: "3"
+
+
+services:
+  db:
+    container_name: mongo
+    image: mongo
+    command: mongod --port 27018
+    volumes:
+      - db-data:/data/db
+    ports: 
+      - "27018:27018"
+  app:
+    container_name: parking-service
+    build: .
+    depends_on:
+      - db
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+volumes:
+  db-data:

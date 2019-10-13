@@ -1,0 +1,6 @@
+# Save this file as .env and fill in the appropriate values
+DM_PARKING_DB_URL=<URL_MONGO>
+DM_PARKING_DB_NAME=<NAME_DATABASE>
+DM_API_ROOT=<ROOT_URL>
+DM_ENV=<ENVIRONMENT> 
+
