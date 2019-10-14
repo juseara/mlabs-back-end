@@ -12,8 +12,8 @@ export default function buildMakeParking({ Id, validations }) {
             throw new Error("Vaga de estacionamento deve conter um id válido.");
         }
 
-        
-        validations.notMatchRegex(plate,/^[A-Z]{3}\-\d{4}$/,"Vaga de estacionamento deve conter um placa de veículo válida.")
+       
+       validations.notMatchRegex(plate,/^[A-Z]{3}\-\d{4}$/,"Vaga de estacionamento deve conter um placa de veículo válida.")
         
 
         return Object.freeze({

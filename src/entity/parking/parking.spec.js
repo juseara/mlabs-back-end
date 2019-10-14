@@ -20,16 +20,13 @@ describe('Parking',()=>{
 
     it('deve retornar dados do parking',()=>{
         let newId = Id.makeId();
-        let created = Date.now();
-        let modified = Date.now();
-        const fakeParking = makeFakeParking({ plate:"AAA-3256", id:newId, paid:true, left:true, createAt:created, modifiedAt:modified });
+        const fakeParking = makeFakeParking({ plate:"AAA-3256", id:newId, paid:true, left:true });
         const parking = makeParking(fakeParking);
         
         expect(parking.getId()).toBe(newId)
         expect(parking.getPlate()).toBe("AAA-3256")
         expect(parking.getPaid()).toBe(true)
         expect(parking.getLeft()).toBe(true)
-        expect(parking.getCreatedAt()).toBe(created)
-        expect(parking.getModifiedAt()).toBe(modified)
+        
     })
 })

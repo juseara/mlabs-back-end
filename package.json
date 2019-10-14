@@ -17,6 +17,13 @@
   "keywords": [],
   "author": "José Augusto",
   "license": "ISC",
+  "jest": {
+    "testPathIgnorePatterns": ["dist"],
+    "verbose": false,
+    "globalSetup": "./jest-setup.js",
+    "globalTeardown": "./jest-teardown.js",
+    "testEnvironment": "./jest-mongo.js"
+  },
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.5.0",
     "cuid": "^2.1.6",
