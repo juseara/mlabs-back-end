@@ -8,7 +8,7 @@
     "now-build": "npm run build",
     "clean": "rimraf dist",
     "db": "babel-node ./db/index.js",
-    "dev": "npm run clean && npm run build && npm run db && cd dist && nodemon -L index.js",
+    "dev": "npm run db && nodemon -L --exec babel-node ./src/index.js",
     "start": "npm run clean && npm run build && npm run db && cd dist && node index.js",
     "test": "jest src --watch",
     "test:coverage": "jest --coverage src",
@@ -18,7 +18,9 @@
   "author": "José Augusto",
   "license": "ISC",
   "jest": {
-    "testPathIgnorePatterns": ["dist"],
+    "testPathIgnorePatterns": [
+      "dist"
+    ],
     "verbose": false,
     "globalSetup": "./jest-setup.js",
     "globalTeardown": "./jest-teardown.js",
@@ -26,6 +28,8 @@
   },
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.5.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "cuid": "^2.1.6",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
