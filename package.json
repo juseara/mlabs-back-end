@@ -9,7 +9,9 @@
     "clean": "rimraf dist",
     "dev": "nodemon -L --exec babel-node ./src/index.js",
     "start": "npm run clean && npm run build && cd dist && node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src --watch",
+    "test:coverage": "jest --coverage src",
+    "docker-dev": "docker-compose -f docker-compose.yml -f docker-development.yml up -d"
   },
   "keywords": [],
   "author": "José Augusto",
