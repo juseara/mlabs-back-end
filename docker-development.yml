@@ -8,3 +8,4 @@ services:
       - DM_PARKING_DB_NAME=mlabs_parking
       - DM_API_ROOT=/api
       - DM_ENV=dev
+      - DM_API_PORT=3000
