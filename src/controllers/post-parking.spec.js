@@ -2,7 +2,7 @@ import makePostParking from './post-parking';
 import makeFakeParking from '../../__test__/fixture/parking';
 
 
-describe('Post Parking controler',()=>{
+describe('POST parking controler',()=>{
 
     it('Publicado com sucesso um parking', async ()=>{
         const postParking = makePostParking({ addParking: p => p })
@@ -21,7 +21,7 @@ describe('Post Parking controler',()=>{
                 'Last-Modified': new Date(request.body.modifiedAt).toUTCString()
               },
             statusCode: 201,
-            body: { reserve:request.body.id }
+            body: { reserva:request.body.id }
         }
 
         const actual = await postParking(request)

@@ -22,7 +22,7 @@ app.get("/",(req, res)=>{
 });
 
 app.post(`${apiRoot}/parking`,makeCallback(controllers.postParking))
-
+app.put(`${apiRoot}/parking/:id/pay`,makeCallback(controllers.putParking))
 app.use(makeCallback(controllers.notFound))
 
 app.listen(process.env.DM_API_PORT, () => {

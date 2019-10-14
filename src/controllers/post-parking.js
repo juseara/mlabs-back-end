@@ -12,7 +12,7 @@ export default function makePostParking({ addParking }){
                 },
                 statusCode: 201,
                 body: { 
-                    reserve: parking.id
+                    reserva: parking.id
                 }
             }
 
