@@ -7,8 +7,9 @@
     "build": "npm run clean && babel src -d dist",
     "now-build": "npm run build",
     "clean": "rimraf dist",
-    "dev": "nodemon -L --exec babel-node ./src/index.js",
-    "start": "npm run clean && npm run build && cd dist && node index.js",
+    "db": "babel-node ./db/index.js",
+    "dev": "npm run clean && npm run build && npm run db && cd dist && nodemon -L index.js",
+    "start": "npm run clean && npm run build && npm run db && cd dist && node index.js",
     "test": "jest src --watch",
     "test:coverage": "jest --coverage src",
     "docker-dev": "docker-compose -f docker-compose.yml -f docker-development.yml up -d"

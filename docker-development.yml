@@ -3,3 +3,8 @@ version: "3"
 services:
   app:
     command: npm run dev
+    environment:
+      - DM_PARKING_DB_URL=mongodb://mongo:27017
+      - DM_PARKING_DB_NAME=mlabs_parking
+      - DM_API_ROOT=/api
+      - DM_ENV=dev

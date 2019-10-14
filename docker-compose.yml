@@ -5,11 +5,11 @@ services:
   db:
     container_name: mongo
     image: mongo
-    command: mongod --port 27018
+    command: mongod --port 27017 --bind_ip_all
     volumes:
       - db-data:/data/db
     ports: 
-      - "27018:27018"
+      - "27017:27017"
   app:
     container_name: parking-service
     build: .
