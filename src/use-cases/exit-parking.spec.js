@@ -32,7 +32,22 @@ describe('Exit parking',()=>{
         return expect(exitParking({...inserted})).rejects.toThrow('Vaga não paga.')
     })
 
-    it("Deve dar saida corretamente", async ()=>{
+    it("Deve retornar erro ao efeturar saida efetuada anteriormente", async ()=>{
+        const fakeParking = makeFakeParking({plate:"KLB-0000"});
+        const exitParking = makeExitParking({ parkingDb });
+        const paymentParking = makePaymentParking({ parkingDb });
+
+        const inserted = await parkingDb.insert(fakeParking);
+
+        const paymented = await paymentParking({...inserted});
+
+        const exited = await exitParking({...paymented})
+        
+        return expect(exitParking({...exited})).rejects.toThrow('Vaga já fez saida.')
+
+    })
+
+    it("Deve efetuar saida corretamente", async ()=>{
         const fakeParking = makeFakeParking({plate:"KLT-0000"});
         const exitParking = makeExitParking({ parkingDb });
         const paymentParking = makePaymentParking({ parkingDb });

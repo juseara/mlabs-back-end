@@ -1,13 +1,11 @@
-export default function makeHistoryParking({ parkingDb, getTime }){
+export default function makeHistoryParking({ parkingDb, getMinutes }){
     return async function historyParking({ plate }){
-        console.log("PLATE", plate)
+        
         const parkings = await parkingDb.findByPlate({ plate })
         
         const result = await parkings.reduce((acc,cur)=>{
-            const {id, paid, left, createAt, exitedAt } = cur
-            const start = createAt
-            const end = left?exitedAt:new Date()
-            const time = getTime(start,end);
+            const {id, paid, left, createdAt, exitedAt } = cur
+            const time = getMinutes(createdAt,left ? exitedAt : Date.now());
             return acc.concat({ id, time, paid, left })
         },[])
         return result

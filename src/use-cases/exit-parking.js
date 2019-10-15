@@ -16,6 +16,10 @@ export default function makeExitParking({ parkingDb }){
             throw new Error("Vaga não paga.")
         }
 
+        if(existing.left){
+            throw new Error("Vaga já fez saida.")
+        }
+
         const parking  = makeParking({ ...existing, modifiedAt : Date.now(), left: true})
         
         const updated = await parkingDb.update({

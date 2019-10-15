@@ -3,7 +3,7 @@ import makeParkingDb from '../data-access/parking-db';
 import makeHistoryParking from './history-parking';
 import makePaymentParking from './payment-parking';
 import makeDb, { clearDb } from '../../__test__/fixture/db';
-import { getTime } from '../util'
+import { getMinutes } from '../util'
 
 describe("History parking",()=>{
 
@@ -11,7 +11,7 @@ describe("History parking",()=>{
 
     beforeEach(() => {
         parkingDb = makeParkingDb({ makeDb });
-        historyParking = makeHistoryParking({ parkingDb, getTime })
+        historyParking = makeHistoryParking({ parkingDb, getMinutes })
         paymentParking = makePaymentParking({ parkingDb })
     })
 

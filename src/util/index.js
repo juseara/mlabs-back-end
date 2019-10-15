@@ -1,3 +1,3 @@
 import moment from 'moment';
 
-export const getTime = (start, end) => moment(moment(end).diff(moment(start))).format("mm [minutes]");
+export const getMinutes = (start, end) => `${moment(end).diff(moment(start),'minutes')} minutes`;
