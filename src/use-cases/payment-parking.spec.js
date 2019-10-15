@@ -15,7 +15,7 @@ describe("Payment Parlking", ()=>{
     it('Deve ser informado um id para pagamento',()=>{
         const paymentParking = makePaymentParking({ parkingDb })
         
-        expect(paymentParking({id:null})).rejects.toThrow('Você deve fornecer um id.')
+       return expect(paymentParking({id:null})).rejects.toThrow('Você deve fornecer um id.')
 
     })
 
@@ -24,7 +24,7 @@ describe("Payment Parlking", ()=>{
 
         const fakeParking = makeFakeParking();
 
-        expect(paymentParking({...fakeParking })).rejects.toThrow('Vaga não encontrada.')
+       return expect(paymentParking({...fakeParking })).rejects.toThrow('Vaga não encontrada.')
     })
 
     it("Parking já está pago",async ()=>{
@@ -33,7 +33,7 @@ describe("Payment Parlking", ()=>{
         await parkingDb.insert(fakeParking);
         await paymentParking({ ...fakeParking })
 
-        expect(paymentParking({...fakeParking })).rejects.toThrow('Vaga já está paga.')
+       return expect(paymentParking({...fakeParking })).rejects.toThrow('Vaga já está paga.')
 
     })
 
@@ -47,6 +47,7 @@ describe("Payment Parlking", ()=>{
         
         expect(inserted.paid).toBe(false);
         expect(paymented.paid).toBe(true);
+        expect(paymented.modifiedAt).toBe(paymented.paymentedAt)
         expect(inserted.modifiedAt).not.toBe(paymented.modifiedAt)
     })
 })

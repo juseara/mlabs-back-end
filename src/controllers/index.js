@@ -1,15 +1,20 @@
 import useCases from '../use-cases';
-import makePostParking from './post-parking';
-import makePutParking from './put-parking';
 import notFound from './not-found';
+import makePostParking from './post-parking';
+import makePutParkingPay from './put-parking-pay';
+import makePutParkingOut from './put-parking-out'
 
-const postParking = makePostParking({ addParking:useCases.addParking })
-const putParking = makePutParking({ paymentParking: useCases.paymentParking })
+const { addParking, paymentParking, exitParking } = useCases
+
+const postParking = makePostParking({ addParking })
+const putParkingPay = makePutParkingPay({ paymentParking })
+const putParkingOut = makePutParkingOut({ exitParking })
 
 const controller = Object.freeze({
     postParking,
     notFound,
-    putParking,
+    putParkingPay,
+    putParkingOut,
 })
 
 export default controller

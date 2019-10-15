@@ -1,18 +1,18 @@
-export default function makePutParking({ paymentParking }){
-    return async function putParking (httpRequest){
+export default function makePutParkingOut({ exitParking }){
+    return async function putParkingOut(httpRequest){
         try {
             
             const id = httpRequest.params.id
 
-            const paymentedParking = await paymentParking({id})
-            
+            const exitedParking = await exitParking({id})
+
             return {
                 headers:{
                     'Content-Type': 'application/json',
-                    'Last-Modified': new Date(paymentedParking.modifiedAt).toUTCString()
+                    'Last-Modified': new Date(exitedParking.modifiedAt).toUTCString()
                 },
                 statusCode: 200,
-                body: { message:`reserva ${paymentedParking.id} paga com sucesso.` }
+                body: { message:`reserva ${exitedParking.id}, saida realizada com sucesso.` }
             }
 
         } catch (error) {

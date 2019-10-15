@@ -16,14 +16,13 @@ export default function makePaymentParking({ parkingDb }){
             throw new Error("Vaga já está paga.")
         }
 
-        const parking  = makeParking({ ...existing, modifiedAt:null, paid: true})
+        const parking  = makeParking({ ...existing, modifiedAt : Date.now(), paid: true})
 
         const updated = await parkingDb.update({
             id              : parking.getId(),
-            plate           : parking.getPlate(),
-            modifiedAt      : parking.getModifiedAt(),
             paid            : parking.getPaid(),
-            left            : parking.getLeft(),
+            modifiedAt      : parking.getModifiedAt(),
+            paymentedAt     : parking.getModifiedAt(),
         })
 
         return {...existing, ...updated}
