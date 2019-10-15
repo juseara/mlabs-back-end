@@ -13,9 +13,13 @@ describe('Parking',()=>{
         expect(()=> makeParking(parking)).toThrow("Vaga de estacionamento deve conter um placa de veículo válida.")
     })
 
+    it('Deve retornar erro de placa inválida',()=>{
+        expect(()=> makeParking()).toThrow("Vaga de estacionamento deve conter um placa de veículo válida.")
+    })
+
     it('Não deve retorna mensagem de erro',()=>{
-        const parking = makeFakeParking()
-        expect(()=> makeParking(parking)).not.toThrow()
+        //const parking = makeFakeParking()
+        expect(()=> makeParking({plate:"ZZZ-3565"})).not.toThrow()
     })
 
     it('deve retornar dados do parking',()=>{
