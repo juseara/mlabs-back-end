@@ -5,7 +5,6 @@ function notMatchRegex(value, regex, message){
    
 }
 
-
 export default Object.freeze({
     notMatchRegex
 })

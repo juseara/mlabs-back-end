@@ -8,7 +8,7 @@ describe("Payment Parlking", ()=>{
 
     let parkingDb;
 
-    beforeAll(()=>{
+    beforeEach(()=>{
         parkingDb = makeParkingDb({ makeDb })
     })
 
@@ -22,14 +22,14 @@ describe("Payment Parlking", ()=>{
     it("Parking não encontrado",()=>{
         const paymentParking = makePaymentParking({ parkingDb })
 
-        const fakeParking = makeFakeParking();
+        const fakeParking = makeFakeParking({plate:"LLL-1111"});
 
        return expect(paymentParking({...fakeParking })).rejects.toThrow('Vaga não encontrada.')
     })
 
     it("Parking já está pago",async ()=>{
+        const fakeParking = makeFakeParking("ATA-9999");
         const paymentParking = makePaymentParking({ parkingDb });
-        const fakeParking = makeFakeParking();
         await parkingDb.insert(fakeParking);
         await paymentParking({ ...fakeParking })
 
@@ -37,9 +37,9 @@ describe("Payment Parlking", ()=>{
 
     })
 
-    it('Parking deve ser pago com sucesso',async ()=>{
+    it('Parking deve ser pago com sucesso',async () => {
+        const fakeParking = makeFakeParking({plate:"COA-0010"});
         const paymentParking = makePaymentParking({ parkingDb });
-        const fakeParking = makeFakeParking();
 
         const inserted = await parkingDb.insert(fakeParking);
         

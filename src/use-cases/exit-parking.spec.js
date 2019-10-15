@@ -19,13 +19,13 @@ describe('Exit parking',()=>{
     })
 
     it("Deve ser informado um id existe para saida",()=>{
-        const fakeParking = makeFakeParking()
+        const fakeParking = makeFakeParking({plate:"AAD-0123"})
         const exitParking = makeExitParking({ parkingDb })
         return expect(exitParking({...fakeParking })).rejects.toThrow('Vaga não encontrada.')
     })
 
     it("Deve retornar um erro ao dar saida não paga",async()=>{
-        const fakeParking = makeFakeParking();
+        const fakeParking = makeFakeParking({plate:"QQQ-1111"});
         const exitParking = makeExitParking({ parkingDb });
         const inserted = await parkingDb.insert(fakeParking);
 
@@ -33,7 +33,7 @@ describe('Exit parking',()=>{
     })
 
     it("Deve dar saida corretamente", async ()=>{
-        const fakeParking = makeFakeParking();
+        const fakeParking = makeFakeParking({plate:"KLT-0000"});
         const exitParking = makeExitParking({ parkingDb });
         const paymentParking = makePaymentParking({ parkingDb });
 

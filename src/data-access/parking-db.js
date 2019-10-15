@@ -5,9 +5,10 @@ export default function makeParkingDb({ makeDb }) {
     insert,
     findById,
     update,
+    findByPlate
   })
 
-  async function insert({ id: _id = Id.makeId(), ...parkingInfo }) {
+  async function insert({ id: _id , ...parkingInfo }) {
     const db = await makeDb()
     const result = await db
       .collection('parking')
@@ -32,7 +33,16 @@ export default function makeParkingDb({ makeDb }) {
     const result = await db
       .collection('parking')
       .updateOne({ _id }, { $set: { ...parkingInfo } })
-    return result.modifiedCount > 0 ? { id: _id, ...parkingInfo } : null
+    return { id: _id, ...parkingInfo }
+  }
+
+  async function findByPlate({ plate }){
+    const db = await makeDb()
+    const query = { plate }
+    
+    const result = await db.collection('parking').find(query)
+    
+    return (await result.toArray()).map(({ _id : id, ...found}) =>({id, ...found}))
   }
 
 }

@@ -5,7 +5,7 @@ const MongoClient = mongodb.MongoClient;
 const url = process.env.DM_PARKING_DB_URL;
 const dbName = process.env.DM_PARKING_DB_NAME;
 
-const client = new MongoClient(url, { useNewUrlParser: true });
+const client = new MongoClient(url,{ useNewUrlParser: true, useUnifiedTopology: true });
 
 async function makeDb () {
     if (!client.isConnected()) {
