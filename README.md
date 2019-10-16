@@ -27,6 +27,8 @@ PUT /parking/:id/out
 GET /parking/:plate
 ```
 
+## Testes
+Os testes unitarios podem ser executados pelo comando `npm run test` e `npm run test:coverage` para analise de cobertura.
 
 
 ## Escolha e tecnologias utilizadas
