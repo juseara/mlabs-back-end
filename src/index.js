@@ -8,7 +8,7 @@ import makeCallback from './express-callback';
 dontenv.config();
 
 const apiRoot = process.env.DM_API_ROOT;
-
+const port = process.env.DM_API_PORT||3000
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,8 +27,8 @@ app.put(`${apiRoot}/parking/:id/out`,makeCallback(controllers.putParkingOut))
 app.get(`${apiRoot}/parking/:plate`,makeCallback(controllers.getParkingHistory))
 app.use(makeCallback(controllers.notFound))
 
-app.listen(process.env.DM_API_PORT, () => {
-    console.log(`Server is listening on port ${process.env.DM_API_PORT}`)
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
 })
 
 export default app
