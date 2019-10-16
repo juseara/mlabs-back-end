@@ -9,25 +9,27 @@ Você deve seguir os passos listado abaixa para instalar todas as dependências 
 
 #### Prerequisitos:
 
-* `node` pode ser baixado [aqui](https://nodejs.org/en/download/).
+* [Node js](https://nodejs.org/en/download/).
 
-* `mongo` pode ser baixado [aqui](https://www.mongodb.com/what-is-mongodb)
+* [Mongo Db](https://www.mongodb.com/what-is-mongodb)
 
-* `docker` pode ser baixado [aqui](https://docs.docker.com/)
-* `docker-compose` pode ser baixado [aqui](https://docs.docker.com/compose/install/)
+* [Docker](https://docs.docker.com/)
 
+* [Docker Compose](https://docs.docker.com/compose/install/)
+ 
 
-  
-
-### Após as instalações anteriores:
-
-* instale todas as dependências do projeto com  `npm run install`
-
-* inicie a aplicação com com `npm start` ou `npm dev`
-
-* `A aplicação será executada no endereço: http://localhost:3000`
+## Iniciar localmente 
 
 
-### Scripts para docker ###
+#### 1. Criar arquvio .env
+Copie e sete as variaveis de ambiente para o projeto litada no arquivo `sampledotenv`
+#### 2. inicie seu mongoDb
+Execute o comando para iniciar o serviço do mongo via terminal.
+#### 3. Inicie o servidor
+instale todas as dependências `npm run install` e execute o script `npm run start` para subir o servidor.
 
-foi incluido alguns scripts para facilitar a execução da aplicação :
+
+### Iniciar via docker ###
+
+#### 1. modo dev
+Execute o comando `npm run docker-dev` ele subistituira alguns passo usando o arquivo `docker-development`
